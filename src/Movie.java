@@ -21,6 +21,17 @@ public class Movie implements Comparable<Movie> {
 		return "\"" + title + "\" - " + stars + " stars";
 	}
 
+public String getTicketPrice() {
+		if (this.stars > 2) {
+			return "That will be $12 please.";
+		} else if (this.title.contains("Twilight")) {
+			return "This movie is so bad, we'll pay YOU to watch it!";
+		} else {
+			return "Don't waste your money on this horrible rubbish.";
+		}
+	}
+
+
 	public int compareTo(Movie otherMovie) {
 		int compareQuantity = otherMovie.getRating();
 
@@ -28,3 +39,5 @@ public class Movie implements Comparable<Movie> {
 		return compareQuantity - this.stars; // descending order
 	}
 }
+
+

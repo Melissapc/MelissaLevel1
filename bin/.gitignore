@@ -1,6 +1,4 @@
 /5drumkit.wav
-/Binary.class
-/BlackHole.class
 /BodyPartQuiz.class
 /Calculator.class
 /Cat.class
@@ -8,6 +6,7 @@
 /DizzyTortoise.class
 /DrumKit.class
 /EasyButton.class
+/EasyButton2.class
 /Fortunecookie.class
 /G-Eazy - Let's Get Lost.mp3
 /Gridworld.class
@@ -26,6 +25,7 @@
 /Netflix1.class
 /NetflixQueue.class
 /Person.class
+/PigLatinTranslator.class
 /Popcorn.class
 /Popcornn.class
 /Prettycat.class
@@ -59,7 +59,10 @@
 /scarymaze.png
 /scarymazesound.wav
 /smurfs.class
-/EasyButton2.class
-/PigLatin.class
-/PigLatin$1PigLatinTranslator.class
-/PigLatinTranslator.class
+/Binary.class
+/BlackHole.class
+/Netflix.class
+/Movie1.class
+/NetflixQ.class
+/SoupMaker.class
+/CupOfSoup.class
