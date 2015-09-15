@@ -74,7 +74,7 @@ public class Jukebox2 implements ActionListener {
 	 * choose which song to play. You can use can use a different button for
 	 * each song, or a picture of the album cover. When the button or album
 	 * cover is clicked, stop the currently playing song, and play the one that
-	 * was selected.
+	 * was selected. dfvndjvnfdjbv
 	 */
 
 	/* Use this method to add album covers to your Panel. */
