@@ -1,4 +1,5 @@
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -7,16 +8,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class EasyButton2 extends MouseAdapter {
+public class EasyButton3d extends MouseAdapter {
 
 	/*
 	 * Use the methods below to make an easy button show on the screen. When
 	 * clicked, it says some very annoying words.
-	 */
-	public static void main(String[] args) {
-		EasyButton2 eazy = new EasyButton2();
-		eazy.showEasyButton();
-		eazy.speak("gnarly");
+	 */public static void main(String[] args) {
+		EasyButton3d button = new EasyButton3d();
+
+		button.showEasyButton();
+
+	}
+
+	public void mouseClicked(MouseEvent e) {
+		this.speak("really ");
 	}
 
 	JLabel easyButtonImage;
@@ -27,13 +32,14 @@ public class EasyButton2 extends MouseAdapter {
 		URL url = null;
 		try {
 			url = new URL(
-					"https://lh3.ggpht.com/K5g3GuzDZFSNqQnZ_tLo9tMPc3fDuWHfY_eiYIIHLYeIGF1etT8741wigPlAFwtVSm8=w300");
+					"https://github.com/jointheleague/league-images/blob/master/easy_button.jpg?raw=true");
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
 		Icon icon = new ImageIcon(url);
 		this.easyButtonImage = new JLabel(icon);
 		quizWindow.add(easyButtonImage);
+		quizWindow.addMouseListener(this);
 		quizWindow.pack();
 	}
 
