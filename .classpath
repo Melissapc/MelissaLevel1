@@ -3,9 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="/Users/league/Google Drive/league-jars/TeachingKidsProgramming - Java6 copy.jar"/>
-	<classpathentry kind="lib" path="/Users/league/Google Drive/league-jars/TeachingKidsProgramming - Java6.jar"/>
-	<classpathentry kind="lib" path="/Users/league/Google Drive/league-jars/TeachingKidsProgramming - unicorn.jar"/>
-	<classpathentry kind="lib" path="/Users/league/Google Drive/league-jars/twitter4j-core-3.0.5.jar"/>
+	<classpathentry kind="lib" path="lib/gridworld.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
