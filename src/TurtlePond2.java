@@ -1,35 +1,35 @@
-
-/****** MUST BE USED WITH JAVA 1.6 *****/
-
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
-import java.awt.Label;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
-import org.teachingextensions.logo.Colors;
+import org.teachingextensions.logo.Paintable;
+import org.teachingextensions.logo.PenColors;
 import org.teachingextensions.logo.Tortoise;
-import org.teachingextensions.logo.TurtlePanel;
 
-public class TurtlePond implements KeyEventDispatcher {
+public class TurtlePond2 implements KeyEventDispatcher {
 
-	// 1. Set a location for the food
-	int cookieX = 240;
-	int cookieY = 250;
+	// 1. Set a location for the cookie
+	int cookieX = 30;
+	int cookieY = 50;
 
 	// 2. Choose the speed you want the Tortoise to go at
 	int speed = 10;
 
 	void setup() {
-		// 3. Add an intro message to tell the user what to do
-		JOptionPane.showMessageDialog(null, "you will find a turtle");
-		// 4. For debugging purposes, show the food
-		showFood();
+		// 3. Edit this intro message to your own style
+		JOptionPane.showMessageDialog(null,
+				"Move the turtle with the arrow keys to find the hidden cookie.\nYou'll get warmer the closer you get.\n\nHurry or she'll die of hunger!");
+
+		// 4. For debugging purposes, show the cookie. The user won’t see this.
+		showCookie();
 	}
 
 	private void goUp() {
@@ -41,15 +41,15 @@ public class TurtlePond implements KeyEventDispatcher {
 	}
 
 	private void goLeft() {
-		// 5. make the tortoise move left (3 lines of code)
+		// 5. make the tortoise move left at the specified speed (3 lines of
+		// code)
 		Tortoise.turn(-90);
 		Tortoise.move(10);
 		Tortoise.turn(90);
-
 	}
 
 	private void goRight() {
-		// 6. make the tortoise move right
+		// 6. use the speed variable to make the tortoise move right
 		Tortoise.turn(90);
 		Tortoise.move(10);
 		Tortoise.turn(-90);
@@ -59,32 +59,27 @@ public class TurtlePond implements KeyEventDispatcher {
 		int tortoiseLocationX = Tortoise.getX();
 		int tortoiseLocationY = Tortoise.getY();
 
+		int diffrenceX = Math.abs(cookieX - tortoiseLocationX);
+		int diffrenceY = Math.abs(cookieY - tortoiseLocationY);
 		// 7. If the Tortoise is within 100 pixels of the food, set the
 		// background color to yellow
-		if (Math.abs(cookieX - tortoiseLocationX) < 100 && (Math.abs(cookieY - tortoiseLocationY) < 100)) {
-			Tortoise.getBackgroundWindow().setBackground(Color.YELLOW);
+		if (diffrenceX < 100 && diffrenceY < 100) {
+			setBackgroundColor(Color.yellow);
 		}
-
 		// 8. If the Tortoise is within 50 pixels of the food, set the
 		// background color to orange
-		if (Math.abs(cookieY - tortoiseLocationY) < 50 && (Math.abs(cookieX - tortoiseLocationX) < 50)) {
-			Tortoise.getBackgroundWindow().setBackground(Color.ORANGE);
-		}
+
 		// 9. If the Tortoise is within 20 pixels of the food, set the
 		// background color to red
-		if (Math.abs(cookieX - tortoiseLocationX) < 20 && (Math.abs(cookieY - tortoiseLocationY) < 20)) {
-			Tortoise.getBackgroundWindow().setBackground(Color.RED);
-		}
-		// 10. If tortoise is within 5 pixels of the cookie, make a pop-up to
-		// tell them they found it
-		if (Math.abs(cookieX - tortoiseLocationX) < 5 && (Math.abs(cookieY - tortoiseLocationY) < 5)) {
 
-		}
-		// 11. If the Tortoise crosses it's own path, move them back to the
-		// beginning
+		// 10. If the Tortoise is within 5 pixels of the cookie, make a pop-up
+		// to tell them they found it
 
-		// 12. If more than 20 seconds have elapsed, tell them the turtle died
-		// of hunger
+		// 11. If more than 20 seconds have elapsed, tell them the turtle died
+		// of hunger!
+
+		// 12. If the Tortoise crosses it's own path, tell them they failed and
+		// move them back to the beginning
 
 	}
 
@@ -93,18 +88,16 @@ public class TurtlePond implements KeyEventDispatcher {
 		return (currentTime.getTime() - startTime.getTime()) / 1000;
 	}
 
-	void setBackgroundColor(Color color) {
+	private void setBackgroundColor(Color color) {
 		Tortoise.getBackgroundWindow().setBackground(color);
 	}
 
-	private void hideFood() {
-		window.remove(component);
-	}
-
-	private void showFood() {
-		// If the food doesn't show up, make sure you are on Java 1.6
-		component.setLocation(cookieX, cookieY);
-		window.add(component);
+	private void showCookie() {
+		Tortoise.getBackgroundWindow().addPaintable(new Paintable() {
+			public void paint(Graphics2D g, JPanel caller) {
+				g.drawOval(cookieX, cookieY, 10, 10);
+			}
+		});
 	}
 
 	private boolean wasHereBefore(int xPosition, int yPosition) {
@@ -122,8 +115,6 @@ public class TurtlePond implements KeyEventDispatcher {
 	 * don't worry about the stuff under here
 	 ******************/
 
-	TurtlePanel window = Tortoise.getBackgroundWindow();
-	Label component = new Label("*");
 	Date startTime = new Date();
 
 	public static void main(String[] args) {
@@ -132,11 +123,11 @@ public class TurtlePond implements KeyEventDispatcher {
 		feeder.setup();
 	}
 
-	void controlTheTortoise() {
+	public void controlTheTortoise() {
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(this);
 		Tortoise.show();
-		Tortoise.setPenColor(Colors.Purples.DarkMagenta);
-		Tortoise.getBackgroundWindow().setBackground(Colors.Grays.SlateGray);
+		Tortoise.setPenColor(PenColors.Purples.DarkMagenta);
+		Tortoise.getBackgroundWindow().setBackground(PenColors.Grays.SlateGray);
 		Tortoise.setSpeed(10);
 	}
 

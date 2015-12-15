@@ -17,10 +17,12 @@ public class Dec72015 {
 		Flower flower = new Flower();
 		Location location = new Location(4, 8);
 		Location buglocation = new Location(5, 4);
+
+		//
 		Location randomlocation = new Location(10, 10);
 
-		world.add(location, flower);
-		world.add(buglocation, bug);
+		// world.add(location, flower);
+		// world.add(buglocation, bug);
 		Random r = new Random();
 		int row = r.nextInt(10);
 		int column = r.nextInt(10);
@@ -29,9 +31,21 @@ public class Dec72015 {
 		Location rightlocation = new Location(row, column + 1);
 		Flower left = new Flower();
 		Flower right = new Flower();
-		world.add(leftlocation, left);
-		world.add(rightlocation, right);
-		world.add(randomlocation, buglocation);
+		if (column != 0) {
+			world.add(leftlocation, left);
+		}
+		if (column != 9) {
+			world.add(rightlocation, right);
+		}
+
+		world.add(random, bug2);
+		for (int x = 0; x < 10; x++) {
+			for (int y = 0; y < 10; y++) {
+				Location filllocation = new Location(x, y);
+				Flower all = new Flower();
+				world.add(filllocation, all);
+			}
+		}
 	}
 
 }
