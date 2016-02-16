@@ -14,8 +14,10 @@ public class GiftBox {
 
 	public static void main(String[] args) {
 		/* Your goal is to pick a present and put it in a box */
-		Present a = new Present();
+		Present a = new Present("gc present");
 		GiftBox g = new GiftBox();
+		g.putGift(a);
+
 	}
 
 	GiftBox() {
@@ -40,7 +42,7 @@ class Present {
 
 	private String name;
 
-	public void Present(String present) {
+	public Present(String present) {
 		this.name = present;
 	}
 
