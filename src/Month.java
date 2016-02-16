@@ -1,9 +1,16 @@
+import java.util.Random;
+
 import javax.swing.JOptionPane;
 
 public class Month {
 	String nameOfMonth;
 	int numberOfDays;
 	Month nextMonth;
+	String season;
+
+	public String getSeason() {
+		return season;
+	}
 
 	public Month getNextMonth() {
 		return nextMonth;
@@ -14,18 +21,18 @@ public class Month {
 	}
 
 	public static void main(String[] args) {
-		Month jan = new Month("january", 31);
-		Month feb = new Month("february", 28);
-		Month mar = new Month("March", 31);
-		Month april = new Month("april", 30);
-		Month may = new Month("may", 31);
-		Month june = new Month("june", 30);
-		Month july = new Month("july", 31);
-		Month aug = new Month("august", 31);
-		Month sep = new Month("september", 30);
-		Month oct = new Month("october", 31);
-		Month nov = new Month("novmeber", 30);
-		Month dec = new Month("december", 31);
+		Month jan = new Month("january", 31, "winter");
+		Month feb = new Month("february", 28, "winter");
+		Month mar = new Month("March", 31, "Spring");
+		Month april = new Month("april", 30, "spring");
+		Month may = new Month("may", 31, "spring");
+		Month june = new Month("june", 30, "summer");
+		Month july = new Month("july", 31, "summer");
+		Month aug = new Month("august", 31, "summer");
+		Month sep = new Month("september", 30, "autumn");
+		Month oct = new Month("october", 31, "autumn");
+		Month nov = new Month("novmeber", 30, "autumn");
+		Month dec = new Month("december", 31, "winter");
 		jan.setNextMonth(feb);
 		feb.setNextMonth(mar);
 		mar.setNextMonth(april);
@@ -39,8 +46,34 @@ public class Month {
 		nov.setNextMonth(dec);
 		dec.setNextMonth(jan);
 		for (int i = 0; i < 12; i++) {
-			askForMonth(jan, feb, mar, april, may, june, july, aug, sep, oct, nov, dec);
+			// askForMonth(jan, feb, mar, april, may, june, july, aug, sep, oct,
+			// nov, dec);
 		}
+
+		Month month = jan;
+		Random r = new Random();
+
+		int number = r.nextInt(12);
+		// System.out.println("hint the month is " + number);
+		for (int i = 0; i < number; i++) {
+			month = month.getNextMonth();
+
+		}
+		// System.out.println("hint the month is: " + month.getNameOfMonth());
+		System.out.println("i am a month in the season: " + month.getSeason());
+		System.out.println("the number of day in this month: " + month.getNumberOfDays());
+		System.out.println("my 3d letter is: " + month.getNameOfMonth().charAt(2));
+		String a = JOptionPane.showInputDialog("what is the month??");
+		if (a.equalsIgnoreCase(month.getNameOfMonth())) {
+			System.out.println("you're correct!!!!:D");
+
+		} else
+			System.out.println("you're wrong! " + month.getNameOfMonth());
+
+	}
+
+	public int getNumberOfDays() {
+		return numberOfDays;
 	}
 
 	private static void askForMonth(Month jan, Month feb, Month mar, Month april, Month may, Month june, Month july,
@@ -103,9 +136,10 @@ public class Month {
 		return nameOfMonth;
 	}
 
-	Month(String nameOfMonth, int numberOfDays) {
+	Month(String nameOfMonth, int numberOfDays, String season) {
 		this.nameOfMonth = nameOfMonth;
 		this.numberOfDays = numberOfDays;
+		this.season = season;
 	}
 
 }
