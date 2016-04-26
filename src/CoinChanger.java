@@ -12,9 +12,18 @@ public class CoinChanger {
 	int coins;
 	int money;
 
+	public int getMoney() {
+		return money;
+	}
+
 	CoinChanger(int coins, int money) {
 		this.coins = coins;
 		this.money = money;
+	}
+
+	boolean hasCoins() {
+		return coins > 0;
+
 	}
 
 	void despense() {
