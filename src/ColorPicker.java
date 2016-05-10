@@ -17,10 +17,11 @@ public class ColorPicker implements ActionListener {
 	JButton button2 = new JButton();
 	JButton button3 = new JButton();
 	JTextField box = new JTextField();
+	int question;
 
 	public static void main(String[] args) {
 		ColorPicker color = new ColorPicker();
-
+		TextOption c = new TextOption(option1, option2, option3);
 	}
 
 	ColorPicker() {
@@ -45,21 +46,70 @@ public class ColorPicker implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if (question == 0) {
+			if (e.getSource() == button1) {
+				label.setText("you chose blue");
+				label.setForeground(Color.blue);
+			}
+			if (e.getSource() == button2) {
+				label.setText("you chose red");
+				label.setForeground(Color.red);
+			}
+			if (e.getSource() == button3) {
+				label.setText("you chose green");
+				label.setForeground(Color.green);
 
-		if (e.getSource() == button1) {
-			label.setText("you chose blue");
-			label.setForeground(Color.blue);
-		}
-		if (e.getSource() == button2) {
-			label.setText("you chose red");
-			label.setForeground(Color.red);
-		}
-		if (e.getSource() == button3) {
-			label.setText("you chose green");
-			label.setForeground(Color.green);
+			}
+			button1.setText("small");
+			button2.setText("medium");
+			button3.setText("big");
 
 		}
-		label.setFont(new Font("helvetica", 0, 16));
+
+		if (question == 1) {
+			int textsize = 0;
+
+			if (e.getSource() == button1) {
+				textsize = 10;
+				button1.setText("small");
+			}
+			if (e.getSource() == button2) {
+				textsize = 15;
+				button2.setText("medium");
+			}
+			if (e.getSource() == button3) {
+				textsize = 40;
+				button3.setText("big");
+			}
+			label.setOpaque(true);
+
+			button1.setOpaque(true);
+			button2.setOpaque(true);
+			button3.setOpaque(true);
+			button1.setBackground(Color.pink);
+			button2.setBackground(Color.cyan);
+			button3.setBackground(Color.magenta);
+			label.setFont(new Font("helvetica", Font.PLAIN, textsize));
+		}
+
+		if (question == 2) {
+			if (e.getSource() == button1) {
+				label.setText("pink");
+				label.setOpaque(true);
+				label.setBackground(Color.pink);
+			}
+			if (e.getSource() == button2) {
+				label.setText("cyan");
+				label.setOpaque(true);
+				label.setBackground(Color.cyan);
+			}
+			if (e.getSource() == button3) {
+				label.setText("magenta");
+				label.setOpaque(true);
+				label.setBackground(Color.magenta);
+			}
+		}
+		question++;
+
 	}
-
 }
