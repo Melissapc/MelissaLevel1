@@ -55,4 +55,10 @@ public class Binary2 implements ActionListener {
 		int binary = convert(text);
 		output.setText("" + binary);
 	}
+
+	String convert2(String binary) {
+		int asciiValue = Integer.parseInt(binary, 2);
+		char theLetter = (char) asciiValue;
+		return "" + theLetter;
+	}
 }
