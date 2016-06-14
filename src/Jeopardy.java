@@ -58,7 +58,7 @@ public class Jeopardy implements ActionListener {
 		frame.add(quizPanel);
 
 		// 6. Use the createButton method to set the value of firstButton
-		JButton firstButton = createButton("two hundred");
+		firstButton = createButton("two hundred");
 
 		// 7. Add the firstButton to the quizPanel
 		quizPanel.add(firstButton);
@@ -99,7 +99,7 @@ public class Jeopardy implements ActionListener {
 		// Create a new JButton
 		JButton b = new JButton();
 		// Set the text of the button to the dollarAmount
-		b.setText("$200");
+		b.setText(dollarAmount);
 		// Increment the buttonCount (this should make the layout vertical)
 		buttonCount++;
 		// Return your new button instead of the temporary button
@@ -116,7 +116,8 @@ public class Jeopardy implements ActionListener {
 		JButton buttonPressed = (JButton) arg0.getSource();
 		// If the buttonPressed was the firstButton
 		if (buttonPressed == firstButton) {
-			askQuestion("this animal has echolocation ", "dolphins", 200);
+
+			askQuestion("this animal has echolocation in the water", "dolphins", 200);
 			updateScore();
 			firstButton.setText("");
 		} else if (buttonPressed == secondButton) {
@@ -125,39 +126,50 @@ public class Jeopardy implements ActionListener {
 			secondButton.setText("");
 		}
 
-		// Call the askQuestion() method
-
-		// Fill in the askQuestion() method. When you play the game, the score
-		// should change.
-
-		// Or if the buttonPressed was the secondButton
-
-		// Call the askQuestionRecipe with a harder question
-
-		// Clear the button text (set the button text to nothing)
-
+		// // Call the askQuestion() method
+		// askQuestion("she can give you all the answers you have in life", "who
+		// is Siri", 600);
+		// // Fill in the askQuestion() method. When you play the game, the
+		// score
+		// // should change.
+		// updateScore();
+		// // Or if the buttonPressed was the secondButton
+		// if (buttonPressed == secondButton) {
+		//
+		// }
+		// // Call the askQuestionRecipe with a harder question
+		// askQuestion("this man invented this fruit logo company", "who is
+		// steve jobs", 1000);
+		// // Clear the button text (set the button text to nothing)
+		// secondButton.setText(null);
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
-		// Remove this temporary message
-		JOptionPane.showMessageDialog(null, "this is where the question will be asked");
+
 		// Use a pop up to ask the user the question
-
+		String answer = JOptionPane.showInputDialog(question);
 		// If the answer is correct
+		if (answer.equals(correctAnswer)) {
 
-		// Increase the score by the prizeMoney
+			// Increase the score by the prizeMoney
+			score = score + prizeMoney;
+			// Call the updateScore() method
+			updateScore();
 
-		// Call the updateScore() method
-
-		// Pop up a message to tell the user they were correct
-
+			// Pop up a message to tell the user they were correct
+			JOptionPane.showMessageDialog(null, "you are correct");
+		}
 		// Otherwise
+		else {
 
-		// Decrement the score by the prizeMoney
-
-		// Pop up a message to tell the user the correct answer
+			// Decrement the score by the prizeMoney
+			score = score - prizeMoney;
+			// Pop up a message to tell the user the correct answer
+			JOptionPane.showMessageDialog(null, "the correct answer is " + correctAnswer);
+		}
 
 		// Call the updateScore() method
+		updateScore();
 
 	}
 
