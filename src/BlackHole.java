@@ -1,8 +1,5 @@
-// Copyright The League of Amazing Programmers 2014
-
 import java.awt.Color;
 
-import org.teachingextensions.logo.Colors;
 import org.teachingextensions.logo.Tortoise;
 
 public class BlackHole {
