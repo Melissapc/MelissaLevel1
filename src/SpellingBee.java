@@ -21,9 +21,18 @@ public class SpellingBee {
 	public void stuffForYouToDo() {
 		// You write code in here
 		String word = randomWord();
-		String a = JOptionPane.showInputDialog("spell the word");
 		Speak(word);
-		if (a == word) {
+		System.out.println(word);
+		String a = JOptionPane.showInputDialog(null, "spell the word");
+		System.out.println(word);
+		if (a.equals(word)) {
+			System.out.println("you're correct");
+			stuffForYouToDo();
+		} else {
+			System.out.println("You're incorrect ");
+			Speak(word);
+			System.out.println(word);
+			String b = JOptionPane.showInputDialog(null, "respell the word");
 			randomWord();
 		}
 	}
@@ -41,7 +50,7 @@ public class SpellingBee {
 			LineNumberReader lnr = new LineNumberReader(new FileReader(new File("/usr/share/dict/words")));
 			lnr.skip(Long.MAX_VALUE);// Skip to the end
 			lines = lnr.getLineNumber();// Get last line number
-			speakNoWait(lines + " words loaded");
+			// speakNoWait(lines + " words loaded");
 			System.out.println("Number of words: " + lines);
 			lnr.close();
 			BufferedReader br = new BufferedReader(new FileReader(new File("/usr/share/dict/words")));

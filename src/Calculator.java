@@ -16,17 +16,17 @@ public class Calculator implements ActionListener {
 	JButton subtract = new JButton();
 	JButton multiply = new JButton();
 	JButton divide = new JButton();
-	String test ="3";
+	JButton clear = new JButton();
+	String test = "3";
+	JTextField number1 = new JTextField(4);
+	JTextField number2 = new JTextField(4);
+
 	Calculator() {
-		
+
 		JFrame jframe = new JFrame();
 		jframe.setSize(600, 600);
 		jframe.setVisible(true);
 
-	
-		JTextField number1 = new JTextField(4);
-
-		JTextField number2 = new JTextField(4);
 		JLabel answer = new JLabel(test);
 
 		JPanel jpanel = new JPanel();
@@ -57,10 +57,9 @@ public class Calculator implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-//		if (e.getSource() == multiply) {
-//			calculator2.add(c, d);
-//			
-		//}
+
+		if (e.getSource() == multiply) {
+			calculator2.multiply(8, 8);
+		}
 	}
 }
