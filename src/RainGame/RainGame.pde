@@ -5,8 +5,6 @@ size(500,screenheight);
   
   
   
- 
-  
 }
 int x=55;
 int y=65;
