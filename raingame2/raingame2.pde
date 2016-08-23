@@ -1,10 +1,21 @@
 int YPos=40;
 int XPos=(int)random(475);
+int score=0;
+
+
 void setup(){  
 size(500, 500);
 
 }
 
+
+void checkCatch(int x){
+if (x > mouseX && x < mouseX+100)
+      score++;
+   else if (score > 0)
+     score--;
+println("Your score is now: " + score);
+}
 
 
 
@@ -16,7 +27,11 @@ ellipse(XPos, YPos, 40, 40);
 if(YPos>475){
 YPos=40;
 XPos=(int)random(475);
+
 }
+fill(0);
+rect(mouseX,450,70,45);
+checkCatch(XPos);
 }
 
 
